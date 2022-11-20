@@ -1,97 +1,139 @@
 # CARD 1
 {
-    "description": "The card shows the number of new hires", # Description of the mark for commenting purpose.
+    # Provide a comprehensive view of everything p.55 (Tamara M.)
+    "task": "summarize",
+    # Description of the mark for commenting purpose.
+    "description": "The card shows the number of new hires",
     "title": {  # Title for the plot.
         "text": "New Hires"
     },
-    "data": {""},     # An object describing the data source. Set to null to ignore the parent’s data source. If no data is set, it is derived from the parent.
-    "transform": [  # An array of data transformations such as filter and new field calculation.
-        {"filter": {"and":
-                    [{"field": "Year", "equal": 2014},
-                     {"not": {"field": "Month", "equal": "Dec"}},
-                     # MORE FILTERS CAN BE ADDED
-                     ]}},
-        {
-            "aggregate": [{  # Array of objects that define fields to aggregate.
-                "op": "sum",  # The aggregation operation to apply to the fields
-                "field": "New Hires", # The data field for which to compute aggregate function.
-                "as": "New Hires" # The output field names to use for each aggregated field.
-            }]
-        }
-    ],
-    "mark": "card"  # A string describing the mark type
+    # All attributes used in a visualization and their types
+    "data": {"attribute": "New Hires", "type": "quantitative"},
+    "global_filter": {"and":
+                      [{"attribute": "Year", "equal": 2014},
+                       {"not": {"attribute": "Month", "equal": "Dec"}}
+                       ]},
+    "aggregate": {  # Array of objects that define attributes to aggregate.
+        "op": "sum",  # The aggregation operation to apply to the attributes
+        # The data attribute for which to compute aggregate function.
+        "attribute": "New Hires",
+        # The output attribute names to use for each aggregated attribute.
+        "as": "New Hires"
+    },
+    "mark": "card",  # A string describing the mark type
+    "insight": ""
 }
 # CARD 2
 {
+    "task": "summarize",
     "description": "The card shows the number of new hires same period last year",
     "title": {
         "text": "New Hires SPLY"
     },
-    "data": {""},
-    "transform": [
-        {"filter": {"and":
-                    [{"field": "Year", "equal": 2014},
-                     {"not": {"field": "Month", "equal": "Dec"}},
-                     # MORE FILTERS CAN BE ADDED
-                     ]}},
-        {
-            "aggregate": [{
-                "op": "sum",
-                "field": "New Hires SPLY",
-                "as": "New Hires SPLY"
-            }]
-        }
-    ],
-    "mark": "card"
+    "data": {"attribute": "New Hires SPLY", "type": "quantitative"},
+    "global_filter": {"and":
+                      [{"attribute": "Year", "equal": 2014},
+                       {"not": {"attribute": "Month", "equal": "Dec"}}
+                       ]},
+    "aggregate": {
+        "op": "sum",
+        "attribute": "New Hires SPLY",
+        "as": "New Hires SPLY"
+    },
+    "mark": "card",
+    "insight": ""
 }
 # FILTER 1
 {
+    "task": "discover, derive, explore",
+    # Find a new knowledge that was not previously known;
+    # Produce new data elements based on exising data elements;
+    # Searching for characteristics without regard to their location, often beginning from an overview of everything
     "description": "The slicer allows filtering by Region.",
     "title": {
         "text": "Region"
     },
-    "data": {""},
-    "transform": [
-        {"filter": {"field": "Region", "oneOf": ["", ""]}}
+    "data": {"attribute": "Region", "type": "categorical"},
+    "global_filter": {"and":
+                      [{"attribute": "Year", "equal": 2014},
+                       {"not": {"attribute": "Month", "equal": "Dec"}}
+                       ]},
+    # "interaction": {
+    #     "filtering": {
+    #         "interaction_attribute": ["Region"],
+    #         "interaction_chart": ["New Hires", "New Hires SPLY",
+    #                               "New Hires and Hew Hires Same Period Last Year", "New Hires by Month and FPDesc",
+    #                               "New Hires by Region and Ethnicity"]}
+    # },
+    "interactions": [
+        {"description": "",
+         "filtering": {"interaction_attribute": "Region",
+                       "interaction_chart": ["New Hires", "New Hires SPLY",
+                                             "New Hires and Hew Hires Same Period Last Year", "New Hires by Month and FPDesc",
+                                             "New Hires by Region and Ethnicity"]}}
     ],
-    "mark": "slicer"
+    "mark": "slicer",
+    "insight": ""
 }
 # FILTER 2
 {
+    "task": "discover, derive, explore",
     "description": "The slicer allows filtering by Ethnicity.",
     "title": {
         "text": "Ethnicity"
     },
-    "data": {""},
-    "transform": [
-        {"filter": {"field": "Ethnicity", "oneOf": ["", ""]}}
+    "data": {"attribute": "Ethnicity", "type": "categorical"},
+    "global_filter": {"and":
+                      [{"attribute": "Year", "equal": 2014},
+                       {"not": {"attribute": "Month", "equal": "Dec"}}
+                       ]},
+    "interactions": [
+        {"description": "",
+         "filtering": {"interaction_attribute": "Region",
+                       "interaction_chart": ["New Hires", "New Hires SPLY",
+                                             "New Hires and Hew Hires Same Period Last Year", "New Hires by Month and FPDesc",
+                                             "New Hires by Region and Ethnicity"]}}
     ],
-    "mark": "slicer"
+    "mark": "slicer",
+    "insight": ""
 }
 # LINE CHART
 {
+    "task": "show trend",  # p. 156
     "description": "The line chart shows the development of the New Hires over the Month.",
     "title": {
         "text": "New Hires by Month and FPDesc"
     },
-    "data": {""},
-    "transform": [
-        {"filter": {"and":
-                    [{"field": "Year", "equal": 2014},
-                     {"not": {"field": "Month", "equal": "Dec"}},
-                     # MORE FILTERS CAN BE ADDED
-                     ]}},
-        {"highlighter": {"field": "Month", "equal": ""}}
+    "data": [{"attribute": "New Hires", "type": "quantitative"},
+             {"attribute": "Month", "type": "temporal"}],
+    "global_filter": {"and":
+                      [{"attribute": "Year", "equal": 2014},
+                       {"not": {"attribute": "Month", "equal": "Dec"}}
+                       ]},
+    "interactions": [
+        {"description": "",
+         "highlighting": {"interaction_attribute": "Month",
+                       "interaction_chart": ["New Hires and Hew Hires Same Period Last Year", "New Hires by Month and FPDesc", "New Hires by Region and Ethnicity"]},
+         "filtering": {"interaction_attribute": "Month",
+                       "interaction_chart": ["New Hires", "New Hires SPLY"]}},
+        {"description": "",
+         "highlighting": {"interaction_attribute": "Month, FPDesc",
+                       "interaction_chart": ["New Hires and Hew Hires Same Period Last Year", "New Hires by Month and FPDesc", "New Hires by Region and Ethnicity"]},
+         "filtering": {"interaction_attribute": "Month, FPDesc",
+                       "interaction_chart": ["New Hires", "New Hires SPLY"]}}
     ],
     "mark": "line",
+    "visual_channel": "position, color",
     "encoding": {
-        "x": {"field": "Month", "type": "temporal", "title": None},
-        "y": {"aggregate": "sum", "field": "New Hires", "type": "quantitative", "title": None},
-        "color": {"field": "FPDesc", "type": "nominal"}
-    }
+        "x_axis": {"attribute": "Month", "type": "temporal", "title": None},
+        "y_axis": {"aggregate": "sum", "attribute": "New Hires", "type": "quantitative", "title": None},
+        "legend": {"attribute": "FPDesc", "type": "nominal"}
+    },
+    "insight": ""
 }
 # CLUSTERED BAR CHART
 {
+    "task": "part-to-whole relationship, lookup values, find trends",  # p. 153
     "description": "The clustered bar chart displayes the New Hires.",
     "title": {
         "text": "New Hires by Region and Ethnicity"
@@ -99,25 +141,26 @@
     "data": {""},
     "transform": [
         {"filter": {"and":
-                    [{"field": "Year", "equal": 2014},
-                     {"not": {"field": "Month", "equal": "Dec"}},
+                    [{"attribute": "Year", "equal": 2014},
+                     {"not": {"attribute": "Month", "equal": "Dec"}},
                      # MORE FILTERS CAN BE ADDED
                      ]}},
         {"highlighter": {"and":
-                         [{"field": "Ethnicity", "equal": ""},
-                          {"field": "Region", "equal": ""}
+                         [{"attribute": "Ethnicity", "equal": ""},
+                          {"attribute": "Region", "equal": ""}
                           ]}}
     ],
     "mark": "bar",
     "encoding": {
-        "x": {"aggregate": "sum", "field": "New Hires", "type": "quantitative", "title": None},
-        "y": {"field": "Region", "type": "nominal", "title": None},
-        "y2": {"field": "VP", "type": "nominal", "title": None},
-        "color": {"field": "Ethnicity", "type": "nominal"}
+        "x": {"aggregate": "sum", "attribute": "New Hires", "type": "quantitative", "title": None},
+        "y": {"attribute": "Region", "type": "nominal", "title": None},
+        "y2": {"attribute": "VP", "type": "nominal", "title": None},
+        "legend": {"attribute": "Ethnicity", "type": "nominal"}
     }
 }
 # LINE CLUSTERED COLUMN COMBO CHART
 {
+    "task": "compare, lookup values, find trends",
     "description": "This element is a line clustered column combo chart.",
     "title": {
         "text": "New Hires and New Hires Same Period Last Year"
@@ -125,19 +168,19 @@
     "data": {""},
     "transform": [
         {"filter": {"and":
-                    [{"field": "Year", "equal": 2014},
-                     {"not": {"field": "Month", "equal": "Dec"}},
+                    [{"attribute": "Year", "equal": 2014},
+                     {"not": {"attribute": "Month", "equal": "Dec"}},
                      # MORE FILTERS CAN BE ADDED
                      ]}},
-        {"highlighter": {"field": "Month", "equal": ""}}
+        {"highlighter": {"attribute": "Month", "equal": ""}}
     ],
     "layer": [
         {
             "mark": "bar",
             "encoding": {
-                "x": {"field": "Month", "type": "temporal", "title": None},
-                "y": {"aggregate": "sum", "field": "New Hires", "type": "quantitative", "title": None},
-                "y2": {"aggregate": "sum", "field": "New Hires SPLY", "type": "quantitative", "title": None}
+                "x": {"attribute": "Month", "type": "temporal", "title": None},
+                "y": {"aggregate": "sum", "attribute": "New Hires", "type": "quantitative", "title": None},
+                "y2": {"aggregate": "sum", "attribute": "New Hires SPLY", "type": "quantitative", "title": None}
             }
 
         },
@@ -146,7 +189,7 @@
             "encoding": {
                 "x": None,
                 "y": None,
-                "color": None
+                "legend": None
             }
         }
     ]
