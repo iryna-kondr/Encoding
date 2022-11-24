@@ -15,12 +15,8 @@
                       [{"attribute": "Year", "equal": 2014},
                        {"not": {"attribute": "Month", "equal": "Dec"}}
                        ]},
-    "aggregate": {  # Array of objects that define attributes to aggregate
-        "op": "sum",  # The aggregation operation to apply to the attributes
-        # The data attribute for which to compute aggregate function
-        "attribute": "New Hires",
-        # The output attribute names to use for each aggregated attribute
-        "as": "New Hires"
+    "encoding": {
+        "value": {"aggregate": "sum", "attribute": "New Hires", "type": "quantitative", "title": "New Hires"}
     },
     "mark": "card",  # A string describing the mark type (no such a mark according to Tamara M.)
     "insight": ""
@@ -38,10 +34,8 @@
                       [{"attribute": "Year", "equal": 2014},
                        {"not": {"attribute": "Month", "equal": "Dec"}}
                        ]},
-    "aggregate": {
-        "op": "sum",
-        "attribute": "New Hires SPLY",
-        "as": "New Hires SPLY"
+    "encoding": {
+        "value": {"aggregate": "sum", "attribute": "New Hires SPLY", "type": "quantitative", "title": "New Hires SPLY"}
     },
     "mark": "card",
     "insight": ""
