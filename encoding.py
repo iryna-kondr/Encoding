@@ -98,7 +98,8 @@
         "text": "New Hires by Month and FPDesc"
     },
     "data": [{"attribute": "New Hires", "type": "quantitative"},
-             {"attribute": "Month", "type": "temporal"}],
+             {"attribute": "Month", "type": "temporal"},
+             {"attribute": "FPDesc", "type": "categorical"}],
     "global_filter": {"and":
                       [{"attribute": "Year", "equal": 2014},
                        {"not": {"attribute": "Month", "equal": "Dec"}}
