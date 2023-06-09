@@ -1,0 +1,67 @@
+{
+    "order": [
+        {
+            "title": "New Hires",
+            "explanation": {
+                "general": "This is a card visual that displays the total number of new hires. It provides a quick summary of the new hires in the dataset.",
+                "dependencies": "This visual is affected by the filters applied on the dashboard, such as the Region and Ethnicity slicers.",
+                "insight": "Use this visual to get an overview of the total new hires."
+            },
+            "type": "card"
+        },
+        {
+            "title": "New Hires SPLY",
+            "explanation": {
+                "general": "This is a card visual that displays the total number of new hires for the same period last year (SPLY). It provides a quick summary of the new hires in the previous year for comparison.",
+                "dependencies": "This visual is affected by the filters applied on the dashboard, such as the Region and Ethnicity slicers.",
+                "insight": "Use this visual to compare the current new hires with the new hires from the same period last year and identify any trends or changes."
+            },
+            "type": "card"
+        },
+        {
+            "title": "Region",
+            "explanation": {
+                "general": "This is a slicer visual that allows you to filter the dashboard based on the selected region(s).",
+                "dependencies": "Selecting a region in this slicer will affect all other visuals on the dashboard, displaying data only for the selected region(s).",
+                "insight": "Use this slicer to explore the new hires data for specific regions and identify regional trends or differences."
+            },
+            "type": "slicer"
+        },
+        {
+            "title": "Ethnicity",
+            "explanation": {
+                "general": "This is a slicer visual that allows you to filter the dashboard based on the selected ethnicity group(s).",
+                "dependencies": "Selecting an ethnicity group in this slicer will affect all other visuals on the dashboard, displaying data only for the selected ethnicity group(s).",
+                "insight": "Use this slicer to explore the new hires data for specific ethnicity groups and identify trends or differences among different ethnicities."
+            },
+            "type": "slicer"
+        },
+        {
+            "title": "New Hires and New Hires Same Period Last Year",
+            "explanation": {
+                "general": "This is a line clustered column combo chart that displays the new hires and new hires for the same period last year (SPLY) by month. It combines lines and bars in one chart for easy comparison.",
+                "dependencies": "This visual is affected by the filters applied on the dashboard, such as the Region and Ethnicity slicers.",
+                "insight": "Use this visual to compare the new hires with the new hires from the same period last year by month, identify trends, and spot any significant changes or patterns."
+            },
+            "type": "lineClusteredColumnComboChart"
+        },
+        {
+            "title": "New Hires by Month and FPDesc",
+            "explanation": {
+                "general": "This is a line chart that displays the new hires by month and full-time/part-time (FPDesc) status. It shows the trends of new hires for each status over time.",
+                "dependencies": "This visual is affected by the filters applied on the dashboard, such as the Region and Ethnicity slicers.",
+                "insight": "Use this visual to analyze the trends of new hires for full-time and part-time positions, and identify any significant changes or patterns in the hiring process."
+            },
+            "type": "lineChart"
+        },
+        {
+            "title": "New Hires by Region and Ethnicity",
+            "explanation": {
+                "general": "This is a clustered bar chart that displays the new hires by region and ethnicity. It shows the part-to-whole relationship, allowing you to compare the new hires across different regions and ethnicities.",
+                "dependencies": "This visual is affected by the filters applied on the dashboard, such as the Region and Ethnicity slicers.",
+                "insight": "Use this visual to explore the distribution of new hires across different regions and ethnicities, identify trends, and spot any significant differences or patterns."
+            },
+            "type": "clusteredBarChart"
+        }
+    ]
+}
